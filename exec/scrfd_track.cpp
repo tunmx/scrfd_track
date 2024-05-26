@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 
     Mat img;
     SCRFD scrfd;
-    string model_path = "/Users/tunm/work/mnn-scrfd/models/scrfd_2.5g_bnkps_shape320x320.mnn";
+    string model_path = "/home/tunm/work/scrfd_track/det_2.5g.mnn";
     scrfd.load_heads(scrfd_2_5g_bnkps_head_info);
     scrfd.reload(model_path, true, 640, 2, 1);
 
@@ -81,6 +81,8 @@ int main(int argc, char** argv)
         }
         putText(img, format("frame: %d fps: %d num: %d", num_frames, num_frames * 1000000 / total_ms, (int)output_stracks.size()),
                 Point(0, 30), 0, 0.6, Scalar(0, 0, 255), 2, LINE_AA);
+        cv::imshow("w", img);
+        cv::waitKey(1);
         writer.write(img);
     }
     cap.release();

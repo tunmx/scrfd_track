@@ -3,15 +3,14 @@ project(bytetrack-onnxrun-cpp)
 set(CMAKE_CXX_STANDARD 11)
 
 find_package(OpenCV REQUIRED)
-set(onnxruntime_INCLUDE_DIRS /Users/tunm/Downloads/onnxruntime-osx-x86_64-1.12.1/include)
-include_directories(${onnxruntime_INCLUDE_DIRS})
+find_package(Eigen3 REQUIRED)
 include_directories(include)
-include_directories(/usr/local/include/eigen3)
 include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(${EIGEN3_INCLUDE_DIRS})
 
 
-set(MNN_LIBS ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/MNN/darwin/lib)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/MNN/darwin/include)
+set(MNN_LIBS /home/tunm/softwate/MNN-2.7.2/build_cuda/)
+include_directories(/home/tunm/softwate/MNN-2.7.2/build_cuda/include)
 include_directories(${OpenCV_INCLUDE_DIRS})
 link_directories(${MNN_LIBS})
 
